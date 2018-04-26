@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: grey;
+    overflow: hidden;
+}
+
+a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+}
+.active {
+    background-color: goldenrod;
+}
+.content {
+    padding: 0px 20px;
+}
+
+table {
+    border: solid black 0.1em;
+    width: 80%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+}
+
+th {
+    border-top: solid black 0.1em;
+    text-align: left;
+    font-weight: initial;
+    width: 25%;
+}
+
+td {
+    border-bottom: solid black 0.1em;
+}
+
+thead th {
+    text-align: center;
+    font-weight: bold;
+}

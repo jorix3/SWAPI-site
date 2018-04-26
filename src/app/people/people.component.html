@@ -1,0 +1,65 @@
+<h1>People</h1>
+
+<table *ngFor="let person of people">
+  <thead>
+    <th colspan="4">{{person.name}}</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Height</th>
+      <th>Mass</th>
+      <th>Hair Color</th>
+      <th>Skin Color</th>
+    </tr>
+    <tr>
+      <td>{{person.height}}</td>
+      <td>{{person.mass}}</td>
+      <td>{{person.hair_color}}</td>
+      <td>{{person.skin_color}}</td>
+    </tr>
+    <tr>
+      <th>Eye Color</th>
+      <th>Birth Year</th>
+      <th>Gender</th>
+      <th>Homeworld</th>
+    </tr>
+    <tr>
+      <td>{{person.eye_color}}</td>
+      <td>{{person.birth_year}}</td>
+      <td>{{person.gender}}</td>
+      <td>{{person.homeworld}}</td>
+    </tr>
+    <tr>
+      <th>Films</th>
+      <th>Species</th>
+      <th>Vehicles</th>
+      <th>Starships</th>
+    </tr>
+    <tr>
+      <td *ngIf="person.films.length != 0; else elseBlock">
+        <select ng-model="films" >
+          <option *ngFor="let film of person.films" value="film">{{film}}</option>
+        </select>
+      </td>
+      <ng-template #elseBlock><td>n/a</td></ng-template>
+      <td *ngIf="person.species.length != 0; else elseBlock">
+        <select ng-model="species" >
+          <option *ngFor="let specie of person.species" value="specie">{{specie}}</option>
+        </select>
+      </td>
+      <ng-template #elseBlock><td>n/a</td></ng-template>
+      <td *ngIf="person.vehicles.length != 0; else elseBlock">
+        <select ng-model="vehicles" >
+          <option *ngFor="let vehicle of person.vehicles" value="vehicle">{{vehicle}}</option>
+        </select>
+      </td>
+      <ng-template #elseBlock><td>n/a</td></ng-template>
+      <td *ngIf="person.starships.length != 0; else elseBlock">
+        <select ng-model="starships" >
+          <option *ngFor="let starship of person.starships" value="starship">{{starship}}</option>
+        </select>
+      </td>
+      <ng-template #elseBlock><td>n/a</td></ng-template>
+    </tr>
+  </tbody>
+</table>
