@@ -44,3 +44,26 @@ thead th {
     text-align: center;
     font-weight: bold;
 }
+
+.listNav td {
+    width: 30%;
+}
+
+.listNav button {
+    width: 8em;
+}
+
+.left {
+    align-content: left;
+    text-align: left;
+}
+
+.center {
+    align-content: center;
+    text-align: center;
+}
+
+.right {
+    align-content: right;
+    text-align: right;
+}

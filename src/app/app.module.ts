@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PeopleComponent } from './people/people.component';
 import { IndexComponent } from './index/index.component';
+import { PlanetsComponent } from './planets/planets.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { IndexComponent } from './index/index.component';
     AppComponent,
     NotfoundComponent,
     PeopleComponent,
-    IndexComponent
+    IndexComponent,
+    PlanetsComponent
   ],
   imports: [
     BrowserModule,

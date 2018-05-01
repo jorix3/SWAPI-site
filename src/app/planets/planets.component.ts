@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService, Results } from '../http.service';
 
 @Component({
-  selector: 'app-people',
-  templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  selector: 'app-planets',
+  templateUrl: './planets.component.html',
+  styleUrls: ['./planets.component.css']
 })
-export class PeopleComponent implements OnInit {
+export class PlanetsComponent implements OnInit {
   results: Results = new Results;
-  people: Person[] = [];
-  peopleCount: number;
+  planets: Planet[] = [];
+  planetCount: number;
 
   constructor(private http: HttpService) {
     http.get((json) => {
       this.results = json;
-      this.people = this.results.results;
-      this.peopleCount = this.people.length;
-    }, 'https://swapi.co/api/people/');
+      this.planets = this.results.results;
+      this.planetCount = this.planets.length;
+    }, 'https://swapi.co/api/planets/');
   }
 
   ngOnInit() {
@@ -28,8 +28,8 @@ export class PeopleComponent implements OnInit {
     if (this.results.next !== null) {
       this.http.get((json) => {
         this.results = json;
-        this.people = this.results.results;
-        this.peopleCount += this.people.length;
+        this.planets = this.results.results;
+        this.planetCount += this.planets.length;
       }, this.results.next);
     }
   }
@@ -40,29 +40,27 @@ export class PeopleComponent implements OnInit {
 
     if (this.results.previous !== null) {
       this.http.get((json) => {
-        this.peopleCount -= this.people.length;
+        this.planetCount -= this.planets.length;
         this.results = json;
-        this.people = this.results.results;
+        this.planets = this.results.results;
       }, this.results.previous);
     }
   }
 
 }
 
-export class Person {
+export class Planet {
   name: string;
-  height: number;
-  mass: number;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
+  rotation_period: number;
+  orbital_period: number;
+  diameter: number;
+  climate: string;
+  gravity: string;
+  terrain: string;
+  surface_water: number;
+  population: number;
+  residents: string[];
   films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
   created: Date;
   edited: Date;
   url: string;

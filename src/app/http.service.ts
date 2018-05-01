@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PeopleList } from './people/people.component';
 
 @Injectable()
 export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-  getPeople(callback: Function): void {
-    this.http.get('https://swapi.co/api/people/').subscribe((jsonObject: PeopleList) => {
+  get(callback: Function, address: string): void {
+    if (address !== null) {
+      this.http.get(address).subscribe((json: Results) => {
 
-      callback(jsonObject.results);
-    });
+        callback(json);
+      });
+    }
   }
+}
+
+export class Results {
+  count: number;
+  next: string;
+  previous: string;
+  results: any[] = [];
 }

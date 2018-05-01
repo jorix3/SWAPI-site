@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PeopleComponent } from './people/people.component';
 import { IndexComponent } from './index/index.component';
+import { PlanetsComponent } from './planets/planets.component';
 
 const routes: Routes = [
   {path: 'people', component: PeopleComponent},
+  {path: 'planets', component: PlanetsComponent},
   {path: '', component: IndexComponent},
   {path: '**', component: NotfoundComponent}
 ];
