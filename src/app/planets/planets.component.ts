@@ -15,6 +15,7 @@ export class PlanetsComponent implements OnInit {
     http.get((json) => {
       this.results = json;
       this.planets = this.results.results;
+      this.formatNumbers();
       this.planetCount = this.planets.length;
     }, 'https://swapi.co/api/planets/');
   }
@@ -29,6 +30,7 @@ export class PlanetsComponent implements OnInit {
       this.http.get((json) => {
         this.results = json;
         this.planets = this.results.results;
+        this.formatNumbers();
         this.planetCount += this.planets.length;
       }, this.results.next);
     }
@@ -43,22 +45,82 @@ export class PlanetsComponent implements OnInit {
         this.planetCount -= this.planets.length;
         this.results = json;
         this.planets = this.results.results;
+        this.formatNumbers();
       }, this.results.previous);
     }
   }
 
+  formatNumbers() {
+    for (const planet of this.planets) {
+      if (planet.rotation_period !== null) {
+        planet.rotation_period = planet.rotation_period.replace(/[^0-9]/g, '');
+      } else {
+        planet.rotation_period = '';
+      }
+
+      if (planet.orbital_period !== null) {
+        planet.orbital_period = planet.orbital_period.replace(/[^0-9]/g, '');
+      } else {
+        planet.orbital_period = '';
+      }
+
+      if (planet.diameter !== null) {
+        planet.diameter = planet.diameter.replace(/[^0-9]/g, '');
+      } else {
+        planet.diameter = '';
+      }
+
+      if (planet.surface_water !== null) {
+        planet.surface_water = planet.surface_water.replace(/[^0-9]/g, '');
+      } else {
+        planet.surface_water = '';
+      }
+
+      if (planet.population !== null) {
+        planet.population = planet.population.replace(/[^0-9]/g, '');
+      } else {
+        planet.population = '';
+      }
+
+      for (let i = 0; i < planet.residents.length; i++) {
+        if (planet.residents[i] !== null) {
+          planet.residents[i] = planet.residents[i].replace(/[^0-9]/g, '');
+        } else {
+          planet.residents[i] = '';
+        }
+      }
+      planet.residents.sort((a: any, b: any) => a - b);
+
+      for (let i = 0; i < planet.films.length; i++) {
+        if (planet.films[i] !== null) {
+          planet.films[i] = planet.films[i].replace(/[^0-9]/g, '');
+        } else {
+          planet.films[i] = '';
+        }
+      }
+      planet.films.sort((a: any, b: any) => a - b);
+
+      if (planet.url !== null) {
+        planet.url = planet.url.replace(/[^0-9]/g, '');
+      } else {
+        planet.url = '';
+      }
+    }
+
+    this.planets.sort((a: any, b: any) => a.url - b.url);
+  }
 }
 
 export class Planet {
   name: string;
-  rotation_period: number;
-  orbital_period: number;
-  diameter: number;
+  rotation_period: string;
+  orbital_period: string;
+  diameter: string;
   climate: string;
   gravity: string;
   terrain: string;
-  surface_water: number;
-  population: number;
+  surface_water: string;
+  population: string;
   residents: string[];
   films: string[];
   created: Date;

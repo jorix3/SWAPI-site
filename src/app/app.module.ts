@@ -11,6 +11,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { PeopleComponent } from './people/people.component';
 import { IndexComponent } from './index/index.component';
 import { PlanetsComponent } from './planets/planets.component';
+import { StarshipsComponent } from './starships/starships.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { SpeciesComponent } from './species/species.component';
+import { FilmsComponent } from './films/films.component';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { PlanetsComponent } from './planets/planets.component';
     NotfoundComponent,
     PeopleComponent,
     IndexComponent,
-    PlanetsComponent
+    PlanetsComponent,
+    StarshipsComponent,
+    VehiclesComponent,
+    SpeciesComponent,
+    FilmsComponent
   ],
   imports: [
     BrowserModule,

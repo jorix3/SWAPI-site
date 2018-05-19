@@ -1,0 +1,95 @@
+<h1>Films</h1>
+
+<div class="content">
+  <table class="listNav">
+    <tr>
+      <td class="left">
+        <button (click)="previous()">Previous</button>
+      </td>
+      <td class="center">
+        {{filmCount}} / {{results.count}}
+      </td>
+      <td class="right">
+        <button (click)="next()">Next</button>
+      </td>
+    </tr>
+  </table>
+
+  <table *ngFor="let film of films">
+    <thead>
+      <th colspan="3">{{film.title}}</th>
+      <th>ID: {{film.url}}</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="big" id="episode">Episode</th>
+        <th colspan="3">Opening</th>
+      </tr>
+      <tr>
+        <td class="big" id="episode">{{film.episode_id}}</td>
+        <td colspan="3">{{film.opening_crawl}}</td>
+      </tr>
+      <tr>
+        <th>Director</th>
+        <th>Producer</th>
+        <th>Release Date</th>
+        <th>Characters</th>
+      </tr>
+      <tr>
+        <td>{{film.director}}</td>
+        <td>{{film.producer}}</td>
+        <td>{{film.release_date}}</td>
+        <td *ngIf="film.characters.length != 0; else none">
+          <select ng-model="characters" >
+            <option *ngFor="let character of film.characters" value="character">ID: {{character}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Planets</th>
+        <th>Starships</th>
+        <th>Vehicles</th>
+        <th>Species</th>
+      </tr>
+      <tr>
+        <td *ngIf="film.planets.length != 0; else none">
+          <select ng-model="planets" >
+            <option *ngFor="let planet of film.planets" value="planet">ID: {{planet}}</option>
+          </select>
+        </td>
+        <td *ngIf="film.starships.length != 0; else none">
+          <select ng-model="starships" >
+            <option *ngFor="let starship of film.starships" value="starship">ID: {{starship}}</option>
+          </select>
+        </td>
+        <td *ngIf="film.vehicles.length != 0; else none">
+          <select ng-model="vehicles" >
+            <option *ngFor="let vehicle of film.vehicles" value="vehicle">ID: {{vehicle}}</option>
+          </select>
+        </td>
+        <td *ngIf="film.species.length != 0; else none">
+          <select ng-model="species" >
+            <option *ngFor="let specie of film.species" value="specie">ID: {{specie}}</option>
+          </select>
+        </td>
+        <ng-template #none>
+          <td>n/a</td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="listNav">
+    <tr>
+      <td class="left">
+        <button (click)="previous()">Previous</button>
+      </td>
+      <td class="center">
+        {{filmCount}} / {{results.count}}
+      </td>
+      <td class="right">
+        <button (click)="next()">Next</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,7 +1,12 @@
 <nav>
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+  <a routerLink="/films" routerLinkActive="active">Films</a>
   <a routerLink="/people" routerLinkActive="active">People</a>
   <a routerLink="/planets" routerLinkActive="active">Planets</a>
-  <a routerLink="/trash" routerLinkActive="active">Not Found</a>
+  <a routerLink="/starships" routerLinkActive="active">Starships</a>
+  <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+  <a routerLink="/species" routerLinkActive="active">Species</a>
+  <a routerLink="/afljshdg" routerLinkActive="active">Error Page</a>
 </nav>
 <div class="content">
   <router-outlet></router-outlet>

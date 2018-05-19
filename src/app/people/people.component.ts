@@ -15,6 +15,7 @@ export class PeopleComponent implements OnInit {
     http.get((json) => {
       this.results = json;
       this.people = this.results.results;
+      this.formatNumbers();
       this.peopleCount = this.people.length;
     }, 'https://swapi.co/api/people/');
   }
@@ -29,6 +30,7 @@ export class PeopleComponent implements OnInit {
       this.http.get((json) => {
         this.results = json;
         this.people = this.results.results;
+        this.formatNumbers();
         this.peopleCount += this.people.length;
       }, this.results.next);
     }
@@ -43,16 +45,82 @@ export class PeopleComponent implements OnInit {
         this.peopleCount -= this.people.length;
         this.results = json;
         this.people = this.results.results;
+        this.formatNumbers();
       }, this.results.previous);
     }
   }
 
+  formatNumbers() {
+    for (const person of this.people) {
+      if (person.height !== null) {
+        person.height = person.height.replace(/[^0-9]/g, '');
+      } else {
+        person.height = '';
+      }
+
+      if (person.mass !== null) {
+        person.mass = person.mass.replace(/[^0-9]/g, '');
+      } else {
+        person.mass = '';
+      }
+
+      if (person.homeworld !== null) {
+        person.homeworld = person.homeworld.replace(/[^0-9]/g, '');
+      } else {
+        person.homeworld = '';
+      }
+
+      for (let i = 0; i < person.films.length; i++) {
+        if (person.films[i] !== null) {
+          person.films[i] = person.films[i].replace(/[^0-9]/g, '');
+        } else {
+          person.films[i] = '';
+        }
+      }
+      person.films.sort((a: any, b: any) => a - b);
+
+      for (let i = 0; i < person.species.length; i++) {
+        if (person.species[i] !== null) {
+          person.species[i] = person.species[i].replace(/[^0-9]/g, '');
+        } else {
+          person.species[i] = '';
+        }
+      }
+      person.species.sort((a: any, b: any) => a - b);
+
+      for (let i = 0; i < person.vehicles.length; i++) {
+        if (person.vehicles[i] !== null) {
+          person.vehicles[i] = person.vehicles[i].replace(/[^0-9]/g, '');
+        } else {
+          person.vehicles[i] = '';
+        }
+      }
+      person.vehicles.sort((a: any, b: any) => a - b);
+
+      for (let i = 0; i < person.starships.length; i++) {
+        if (person.starships[i] !== null) {
+          person.starships[i] = person.starships[i].replace(/[^0-9]/g, '');
+        } else {
+          person.starships[i] = '';
+        }
+      }
+      person.starships.sort((a: any, b: any) => a - b);
+
+      if (person.url !== null) {
+        person.url = person.url.replace(/[^0-9]/g, '');
+      } else {
+        person.url = '';
+      }
+    }
+
+    this.people.sort((a: any, b: any) => a.url - b.url);
+  }
 }
 
 export class Person {
   name: string;
-  height: number;
-  mass: number;
+  height: string;
+  mass: string;
   hair_color: string;
   skin_color: string;
   eye_color: string;
