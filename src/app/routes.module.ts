@@ -1,12 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './http.service';
 import { RouterModule, Routes } from '@angular/router';
-import { RoutesModule } from './routes.module';
 
-
-import { AppComponent } from './app.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PeopleComponent } from './people/people.component';
 import { IndexComponent } from './index/index.component';
@@ -16,25 +10,21 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { SpeciesComponent } from './species/species.component';
 import { FilmsComponent } from './films/films.component';
 
+const routes: Routes = [
+  {path: '', component: IndexComponent},
+  {path: 'films', component: FilmsComponent},
+  {path: 'people', component: PeopleComponent},
+  {path: 'planets', component: PlanetsComponent},
+  {path: 'starships', component: StarshipsComponent},
+  {path: 'vehicles', component: VehiclesComponent},
+  {path: 'species', component: SpeciesComponent},
+  {path: '**', component: NotfoundComponent}
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotfoundComponent,
-    PeopleComponent,
-    IndexComponent,
-    PlanetsComponent,
-    StarshipsComponent,
-    VehiclesComponent,
-    SpeciesComponent,
-    FilmsComponent
-  ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    RoutesModule
+    RouterModule.forRoot(routes, { enableTracing: true })
   ],
-  providers: [HttpService],
-  bootstrap: [AppComponent]
+  exports: [RouterModule]
 })
-export class AppModule { }
+export class RoutesModule { }

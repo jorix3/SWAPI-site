@@ -1,1 +1,116 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.content {
+    margin-left: auto;
+	margin-right: auto;
+	max-width: 1200px;
+	float: none;
+}
+
+h1 {
+    text-align: center;
+    color: gold;
+}
+
+nav {
+    background-color: gold;
+    overflow: hidden;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+a {
+    display: inline-block;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    background-color: black;
+    color: gold;
+}
+
+.active {
+    background-color: goldenrod;
+}
+
+.active:hover {
+    background-color: goldenrod;
+}
+
+table {
+    border: solid gold 0.1em;
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    color: gold;
+}
+
+th {
+    border-top: solid gold 0.1em;
+    text-align: left;
+    font-weight: initial;
+    width: 25%;
+    color: gold;
+    padding: 0.2em;
+}
+
+td {
+    border-bottom: solid gold 0.1em;
+    color: gold;
+    padding: 0.2em;
+}
+
+thead th {
+    text-align: center;
+    font-weight: bolder;
+    color: gold;
+}
+
+.listNav td {
+    width: 30%;
+    color: gold;
+}
+
+.listNav button {
+    width: 8em;
+    color: black;
+    font-size: 1.2em;
+}
+
+.left {
+    align-content: left;
+    text-align: left;
+}
+
+.center {
+    align-content: center;
+    text-align: center;
+}
+
+.right {
+    align-content: right;
+    text-align: right;
+}
+
+#palpatine {
+    display: block;
+    margin: auto;
+}
+
+button {
+    background-color: gold;
+}
+
+.big {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
